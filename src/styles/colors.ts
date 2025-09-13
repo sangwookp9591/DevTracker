@@ -1,117 +1,61 @@
 export const lightColors = {
-  // Primary Colors
-  primary: '#2563EB', // Blue 600
-  primaryLight: '#3B82F6', // Blue 500
-  primaryDark: '#1D4ED8', // Blue 700
+  // VS Code Light+ 기반
+  primary: '#0969DA', // GitHub Blue
+  primaryLight: '#218BFF',
+  primaryDark: '#0550AE',
 
-  // Secondary Colors
-  secondary: '#10B981', // Emerald 500
-  secondaryLight: '#34D399', // Emerald 400
-  secondaryDark: '#059669', // Emerald 600
-
-  // Accent Colors
-  accent: '#F59E0B', // Amber 500
-  accentLight: '#FCD34D', // Amber 300
-  accentDark: '#D97706', // Amber 600
+  // Accent Colors (VS Code syntax highlighting)
+  secondary: '#22863A', // Green
+  accent: '#E36209', // Orange
+  purple: '#6F42C1', // Purple
+  pink: '#D73A49', // Red/Pink]
+  cyan: '#8BE9FD', // Dracula Cyan
+  yellow: '#F1FA8C', // Dracula Yellow
 
   // Status Colors
-  success: '#10B981', // Emerald 500
-  warning: '#F59E0B', // Amber 500
-  error: '#EF4444', // Red 500
-  info: '#3B82F6', // Blue 500
+  success: '#28A745',
+  warning: '#F66A0A',
+  error: '#D73A49',
+  info: '#0969DA',
 
-  // Text Colors
-  text: '#111827', // Gray 900
-  textSecondary: '#6B7280', // Gray 500
-  textLight: '#9CA3AF', // Gray 400
+  // Text Colors (VS Code Light)
+  text: '#24292F', // Dark gray
+  textSecondary: '#656D76',
+  textLight: '#8B949E',
   textInverse: '#FFFFFF',
 
   // Background Colors
   background: '#FFFFFF',
-  backgroundSecondary: '#F9FAFB', // Gray 50
-  backgroundTertiary: '#F3F4F6', // Gray 100
+  backgroundSecondary: '#F6F8FA',
+  backgroundTertiary: '#EAEEF2',
 
   // Surface Colors
   surface: '#FFFFFF',
-  surfaceSecondary: '#F9FAFB', // Gray 50
   card: '#FFFFFF',
 
   // Border Colors
-  border: '#E5E7EB', // Gray 200
-  borderLight: '#F3F4F6', // Gray 100
-  borderDark: '#D1D5DB', // Gray 300
-
-  // Overlay
-  overlay: 'rgba(0, 0, 0, 0.5)',
-  overlayLight: 'rgba(0, 0, 0, 0.3)',
+  border: '#D0D7DE',
+  borderLight: '#EAEEF2',
+  borderDark: '#8B949E',
 
   // Component Specific
   inputBackground: '#FFFFFF',
-  inputBorder: '#D1D5DB', // Gray 300
-  inputBorderFocus: '#2563EB', // Blue 600
+  inputBorder: '#D0D7DE',
+  inputBorderFocus: '#0969DA',
 
-  // Chart Colors
-  chart: {
-    primary: '#2563EB',
-    secondary: '#10B981',
-    tertiary: '#F59E0B',
-    quaternary: '#EF4444',
-    quinary: '#8B5CF6',
-  },
-};
-
-export const darkColors = {
-  // Primary Colors
-  primary: '#3B82F6', // Blue 500
-  primaryLight: '#60A5FA', // Blue 400
-  primaryDark: '#2563EB', // Blue 600
-
-  // Secondary Colors
-  secondary: '#10B981', // Emerald 500
-  secondaryLight: '#34D399', // Emerald 400
-  secondaryDark: '#059669', // Emerald 600
-
-  // Accent Colors
-  accent: '#F59E0B', // Amber 500
-  accentLight: '#FCD34D', // Amber 300
-  accentDark: '#D97706', // Amber 600
-
-  // Status Colors
-  success: '#10B981', // Emerald 500
-  warning: '#F59E0B', // Amber 500
-  error: '#EF4444', // Red 500
-  info: '#3B82F6', // Blue 500
-
-  // Text Colors
-  text: '#F9FAFB', // Gray 50
-  textSecondary: '#9CA3AF', // Gray 400
-  textLight: '#6B7280', // Gray 500
-  textInverse: '#111827', // Gray 900
-
-  // Background Colors
-  background: '#111827', // Gray 900
-  backgroundSecondary: '#1F2937', // Gray 800
-  backgroundTertiary: '#374151', // Gray 700
-
-  // Surface Colors
-  surface: '#1F2937', // Gray 800
-  surfaceSecondary: '#374151', // Gray 700
-  card: '#1F2937', // Gray 800
-
-  // Border Colors
-  border: '#374151', // Gray 700
-  borderLight: '#4B5563', // Gray 600
-  borderDark: '#6B7280', // Gray 500
-
-  // Overlay
   overlay: 'rgba(0, 0, 0, 0.7)',
   overlayLight: 'rgba(0, 0, 0, 0.5)',
 
-  // Component Specific
-  inputBackground: '#374151', // Gray 700
-  inputBorder: '#4B5563', // Gray 600
-  inputBorderFocus: '#3B82F6', // Blue 500
-
+  // Syntax highlighting inspired
+  syntax: {
+    keyword: '#CF222E', // Red
+    string: '#032F62', // Dark blue
+    comment: '#6A737D', // Gray
+    function: '#6F42C1', // Purple
+    variable: '#E36209', // Orange
+    type: '#BD93F9', // Dracula Purple
+    constant: '#8BE9FD', // Dracula Cyan
+  },
   // Chart Colors
   chart: {
     primary: '#3B82F6',
@@ -122,4 +66,72 @@ export const darkColors = {
   },
 };
 
-export const colors = lightColors; // 기본값은 라이트 모드
+export const darkColors = {
+  // VS Code One Dark Pro + Dracula 조합
+  primary: '#61DAFB', // React Blue (개발자 친화적)
+  primaryLight: '#7CE3FE',
+  primaryDark: '#4FC3D7',
+
+  // Dracula 테마 색상들
+  secondary: '#50FA7B', // Dracula Green
+  accent: '#FFB86C', // Dracula Orange
+  purple: '#BD93F9', // Dracula Purple
+  pink: '#FF79C6', // Dracula Pink
+  cyan: '#8BE9FD', // Dracula Cyan
+  yellow: '#F1FA8C', // Dracula Yellow
+
+  // Status Colors
+  success: '#50FA7B', // Dracula Green
+  warning: '#FFB86C', // Dracula Orange
+  error: '#FF5555', // Dracula Red
+  info: '#8BE9FD', // Dracula Cyan
+
+  // Text Colors (One Dark Pro)
+  text: '#ABB2BF', // Light gray
+  textSecondary: '#828997',
+  textLight: '#5C6370',
+  textInverse: '#282C34',
+
+  // Background Colors (One Dark Pro + Dracula)
+  background: '#282A36', // Dracula background
+  backgroundSecondary: '#44475A', // Dracula selection
+  backgroundTertiary: '#6272A4', // Dracula comment
+
+  // Surface Colors
+  surface: '#44475A',
+  card: '#44475A',
+
+  // Border Colors
+  border: '#6272A4',
+  borderLight: '#44475A',
+  borderDark: '#ABB2BF',
+
+  // Component Specific
+  inputBackground: '#44475A',
+  inputBorder: '#6272A4',
+  inputBorderFocus: '#61DAFB',
+
+  overlay: 'rgba(0, 0, 0, 0.7)',
+  overlayLight: 'rgba(0, 0, 0, 0.5)',
+
+  // VS Code syntax highlighting
+  syntax: {
+    keyword: '#FF79C6', // Dracula Pink
+    string: '#F1FA8C', // Dracula Yellow
+    comment: '#6272A4', // Dracula Comment
+    function: '#50FA7B', // Dracula Green
+    variable: '#FFB86C', // Dracula Orange
+    type: '#BD93F9', // Dracula Purple
+    constant: '#8BE9FD', // Dracula Cyan
+  },
+
+  chart: {
+    primary: '#3B82F6',
+    secondary: '#10B981',
+    tertiary: '#F59E0B',
+    quaternary: '#EF4444',
+    quinary: '#8B5CF6',
+  },
+};
+
+export const colors = darkColors;
