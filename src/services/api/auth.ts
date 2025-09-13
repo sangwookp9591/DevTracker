@@ -11,6 +11,7 @@ export interface RegisterRequest {
   nickname: string;
   developerType: string;
   hourlyRate?: number;
+  githubUsername?: string;
 }
 
 export interface AuthResponse {
@@ -24,16 +25,13 @@ export const loginAPI = async (data: LoginRequest) => {
 };
 
 export const registerAPI = async (data: RegisterRequest) => {
-  return apiClient.post<AuthResponse>('/auth/register', data);
+  return await apiClient.post<AuthResponse>('/auth/register', data);
 };
 
 export const refreshTokenAPI = async (refreshToken: string) => {
-  return apiClient.post<{ token: string; refreshToken: string }>(
-    '/auth/refresh',
-    {
-      refreshToken,
-    },
-  );
+  return apiClient.post<{ token: string; refreshToken: string }>('/auth/refresh', {
+    refreshToken,
+  });
 };
 
 export const logoutAPI = async () => {
