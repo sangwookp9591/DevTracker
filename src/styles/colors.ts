@@ -11,6 +11,7 @@ export const lightColors = {
   pink: '#D73A49', // Red/Pink]
   cyan: '#8BE9FD', // Dracula Cyan
   yellow: '#F1FA8C', // Dracula Yellow
+  white: '#FFFFFF',
 
   // Status Colors
   success: '#28A745',
@@ -79,6 +80,7 @@ export const darkColors = {
   pink: '#FF79C6', // Dracula Pink
   cyan: '#8BE9FD', // Dracula Cyan
   yellow: '#F1FA8C', // Dracula Yellow
+  white: '#FFFFFF',
 
   // Status Colors
   success: '#50FA7B', // Dracula Green
