@@ -9,7 +9,7 @@ import {
   StyleProp,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { colors, typography, spacing, borderRadius } from '@/styles';
+import { colors, typography, spacing, borderRadius } from '../../../styles';
 
 interface InputProps extends TextInputProps {
   label?: string;
