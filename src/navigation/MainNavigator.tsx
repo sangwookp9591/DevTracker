@@ -1,19 +1,14 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MainTabParamList } from './type';
-import { colors } from '@styles/colors';
-import HomeScreen from '@screens/main/HomeScreen';
+import { colors } from '../styles/colors';
+import HomeScreen from '../screens/main/HomeScreen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
 const MainNavigator: React.FC = () => {
-  const renderTabIcon = (
-    routeName: string,
-    focused: boolean,
-    color: string,
-    size: number,
-  ) => {
+  const renderTabIcon = (routeName: string, focused: boolean, color: string, size: number) => {
     let iconName: string;
     switch (routeName) {
       case 'Home':
@@ -39,8 +34,7 @@ const MainNavigator: React.FC = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) =>
-          renderTabIcon(route.name, focused, color, size),
+        tabBarIcon: ({ focused, color, size }) => renderTabIcon(route.name, focused, color, size),
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textSecondary,
         tabBarStyle: {
@@ -52,11 +46,7 @@ const MainNavigator: React.FC = () => {
         headerShown: false,
       })}
     >
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ tabBarLabel: '홈' }}
-      />
+      <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: '홈' }} />
     </Tab.Navigator>
   );
 };
