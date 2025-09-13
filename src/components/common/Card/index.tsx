@@ -1,20 +1,15 @@
 import React from 'react';
-import { View, StyleSheet, ViewStyle } from 'react-native';
+import { View, StyleSheet, ViewStyle, StyleProp } from 'react-native';
 import { colors, spacing, borderRadius, shadows } from '../../../styles';
 
 interface CardProps {
   children: React.ReactNode;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
   variant?: 'default' | 'elevated' | 'outlined';
   padding?: keyof typeof spacing;
 }
 
-const Card: React.FC<CardProps> = ({
-  children,
-  style,
-  variant = 'default',
-  padding = 'md',
-}) => {
+const Card: React.FC<CardProps> = ({ children, style, variant = 'default', padding = 'md' }) => {
   const getCardStyle = (): ViewStyle => {
     const baseStyle: any = [styles.card, { padding: spacing[padding] }];
 

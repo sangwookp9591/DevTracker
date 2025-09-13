@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TextInputProps,
   ViewStyle,
+  StyleProp,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors, typography, spacing, borderRadius } from '@/styles';
@@ -16,7 +17,7 @@ interface InputProps extends TextInputProps {
   leftIcon?: string;
   rightIcon?: string;
   onRightIconPress?: () => void;
-  containerStyle?: ViewStyle;
+  containerStyle?: StyleProp<ViewStyle>;
   required?: boolean;
 }
 
@@ -46,12 +47,7 @@ const Input = forwardRef<TextInput, InputProps>(
 
         <View style={[styles.inputContainer, error && styles.inputError]}>
           {leftIcon && (
-            <Icon
-              name={leftIcon}
-              size={20}
-              color={colors.textSecondary}
-              style={styles.leftIcon}
-            />
+            <Icon name={leftIcon} size={20} color={colors.textSecondary} style={styles.leftIcon} />
           )}
 
           <TextInput
