@@ -55,12 +55,12 @@ const OnboardingScreen: React.FC = () => {
       setCurrentIndex(nextIndex);
     } else {
       // 마지막 단계에서 로그인 화면으로 이동
-      navigation.navigate('Login' as never);
+      navigation.navigate('Auth' as never);
     }
   };
 
   const handleSkip = () => {
-    navigation.navigate('Login' as never);
+    navigation.navigate('Auth' as never);
   };
 
   const handleScroll = (event: any) => {
