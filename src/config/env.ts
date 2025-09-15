@@ -1,14 +1,12 @@
 export const API_CONFIG = {
-  BASE_URL: __DEV__
-    ? 'http://localhost:8080/api'
-    : 'https://api.devtracker.com/api',
+  BASE_URL: __DEV__ ? 'http://localhost:8080/api' : 'https://devtracker.co.kr/api',
   TIMEOUT: 10000,
   RETRY_ATTEMPTS: 3,
 };
 
 export const GIT_CONFIG = {
-  GITHUB_CLIENT_ID: 'your_github_client_id',
-  GITLAB_CLIENT_ID: 'your_gitlab_client_id',
+  GITHUB_CLIENT_ID: 'Ov23liJgJ5EQFHHpJUts',
+  GITLAB_CLIENT_ID: 'Ov23liJgJ5EQFHHpJUts',
 };
 
 export const NOTIFICATION_CONFIG = {
