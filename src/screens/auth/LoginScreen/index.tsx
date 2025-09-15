@@ -21,6 +21,7 @@ import LoadingSpinner from '../../../components/common/LoadingSpinner';
 import { colors, typography, spacing } from '../../../styles';
 import { useAuthStore } from '../../../store';
 import { loginAPI } from '../../../services/api/auth';
+import { signInWithGitHub } from '../../../services/auth/githubOAuth';
 
 interface LoginFormData {
   email: string;
@@ -38,7 +39,7 @@ const LoginScreen: React.FC = () => {
   const [errors, setErrors] = useState<Partial<LoginFormData>>({});
   const [showPassword, setShowPassword] = useState(false);
 
-  // 로그인 mutation
+  // 일반 로그인 mutation
   const loginMutation = useMutation({
     mutationFn: loginAPI,
     onSuccess: response => {
@@ -53,6 +54,24 @@ const LoginScreen: React.FC = () => {
         error.response?.data?.message || '로그인에 실패했습니다. 다시 시도해주세요.',
         [{ text: '확인' }],
       );
+    },
+  });
+
+  // GitHub 로그인 mutation
+  const githubLoginMutation = useMutation({
+    mutationFn: signInWithGitHub,
+    onSuccess: (response: any) => {
+      if (response.success && response.user && response.token) {
+        login(response.user, response.token);
+        navigation.navigate('MainTabs' as never);
+        Alert.alert('성공', 'GitHub 로그인에 성공했습니다!');
+      } else if (response.error && response.error !== 'login_cancelled') {
+        Alert.alert('GitHub 로그인 실패', response.error);
+      }
+    },
+    onError: (error: any) => {
+      console.error('GitHub login mutation error:', error);
+      Alert.alert('오류', 'GitHub 로그인 중 예상치 못한 오류가 발생했습니다.');
     },
   });
 
@@ -82,18 +101,7 @@ const LoginScreen: React.FC = () => {
   };
 
   const handleGitHubLogin = () => {
-    // GitHub OAuth2 로그인 처리
-    // 실제로는 WebView나 인앱 브라우저를 통해 처리
-    Alert.alert('GitHub 로그인', 'GitHub 계정으로 로그인하시겠습니까?', [
-      { text: '취소', style: 'cancel' },
-      {
-        text: '확인',
-        onPress: () => {
-          // TODO: GitHub OAuth2 처리
-          console.log('GitHub OAuth2 login');
-        },
-      },
-    ]);
+    githubLoginMutation.mutate();
   };
 
   const handleSignUp = () => {
@@ -112,8 +120,12 @@ const LoginScreen: React.FC = () => {
     }
   };
 
-  if (loginMutation.isPending) {
-    return <LoadingSpinner message="로그인 중..." overlay />;
+  // 로딩 상태 체크
+  const isLoading = loginMutation.isPending || githubLoginMutation.isPending;
+
+  if (isLoading) {
+    const loadingMessage = loginMutation.isPending ? '로그인 중...' : 'GitHub 로그인 중...';
+    return <LoadingSpinner message={loadingMessage} overlay />;
   }
 
   return (
@@ -153,6 +165,7 @@ const LoginScreen: React.FC = () => {
               leftIcon="email"
               error={errors.email}
               required
+              editable={!isLoading}
             />
 
             <Input
@@ -166,9 +179,14 @@ const LoginScreen: React.FC = () => {
               onRightIconPress={() => setShowPassword(!showPassword)}
               error={errors.password}
               required
+              editable={!isLoading}
             />
 
-            <TouchableOpacity style={styles.forgotPasswordContainer} onPress={handleForgotPassword}>
+            <TouchableOpacity
+              style={styles.forgotPasswordContainer}
+              onPress={handleForgotPassword}
+              disabled={isLoading}
+            >
               <Text style={styles.forgotPasswordText}>비밀번호를 잊으셨나요?</Text>
             </TouchableOpacity>
 
@@ -178,7 +196,7 @@ const LoginScreen: React.FC = () => {
               variant="primary"
               size="lg"
               style={styles.loginButton}
-              disabled={loginMutation.isPending}
+              disabled={isLoading}
               loading={loginMutation.isPending}
             />
           </Card>
@@ -195,14 +213,16 @@ const LoginScreen: React.FC = () => {
               style={styles.githubButton}
               textStyle={styles.githubButtonText}
               icon={<Icon name="github" size={20} color={colors.text} style={styles.githubIcon} />}
+              disabled={isLoading}
+              loading={githubLoginMutation.isPending}
             />
           </Card>
 
           {/* Sign Up Link */}
           <View style={styles.signUpContainer}>
             <Text style={styles.signUpPrompt}>계정이 없으신가요? </Text>
-            <TouchableOpacity onPress={handleSignUp}>
-              <Text style={styles.signUpLink}>회원가입</Text>
+            <TouchableOpacity onPress={handleSignUp} disabled={isLoading}>
+              <Text style={[styles.signUpLink, isLoading && styles.disabledText]}>회원가입</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -311,6 +331,9 @@ const styles = StyleSheet.create({
     ...typography.body2,
     color: colors.primary,
     fontWeight: typography.fontWeight.semibold,
+  },
+  disabledText: {
+    opacity: 0.5,
   },
 });
 
