@@ -49,5 +49,23 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CFBundleURLTypes</key>
+    <array>
+        <!-- 커스텀 딥링크 -->
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.devtracker.app</string>
+			<key>CFBundleURLSchemes</key>
+        	<array>
+				<string>com.devtracker.app</string>
+			</array>
+		</dict>
+    </array>
+    
+    <!-- Associated Domains (Universal Links 용) -->
+    <key>com.apple.developer.associated-domains</key>
+    <array>
+        <string>applinks:devtracker.co.kr</string>
+    </array>
 </dict>
 </plist>
